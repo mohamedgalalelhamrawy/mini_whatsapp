@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_whatsapp/components/custom_textfiled.dart';
 import 'package:mini_whatsapp/constants.dart';
@@ -12,6 +15,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late TextEditingController countryNamecontroler;
   late TextEditingController phoneNumbercontroler;
+
+  ShowCountryNamePicker() {
+    showCountryPicker(
+        context: context,
+        onSelect: (Country) {
+          countryNamecontroler.text = Country.name;
+        },
+        countryListTheme: CountryListThemeData(
+          bottomSheetHeight: 600,
+          backgroundColor: kbackgroundcolor,
+          flagSize: 22,
+          borderRadius: BorderRadius.circular(20),
+          inputDecoration: const InputDecoration(
+            labelStyle: TextStyle(color: kprimarycolor),
+            prefixIcon: Icon(
+              Icons.language,
+              color: kprimarycolor,
+            ),
+            hintText: "Search Country Name",
+            enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey)),
+            focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey)),
+          ),
+        ));
+  }
 
   @override
   void initState() {
@@ -30,9 +59,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff121A1D),
+      backgroundColor: kbackgroundcolor,
       appBar: AppBar(
-        backgroundColor: const Color(0xff121A1D),
+        backgroundColor: kbackgroundcolor,
         title: const Text("Enter Your Phone Number"),
         centerTitle: true,
       ),
@@ -47,21 +76,40 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: CustomTextfiled(
+              readonly: true,
+              suffix: const Icon(Icons.arrow_drop_down),
+              controller: countryNamecontroler,
+              ontap: ShowCountryNamePicker,
+              hinttext: countryNamecontroler.text,
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: CustomTextfiled(
               controller: phoneNumbercontroler,
               ontap: () {},
               hinttext: "Phone Number",
               keyboardType: TextInputType.number,
             ),
           ),
-         const  Spacer(flex: 1,)
-         , Padding(
+          const Spacer(
+            flex: 1,
+          ),
+          Padding(
             padding: const EdgeInsets.only(bottom: 40),
             child: TextButton(
               onPressed: () {},
-               child: Text("NEXT",style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+              child: Text(
+                "NEXT",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
               style: TextButton.styleFrom(
                 foregroundColor: Colors.black,
-                backgroundColor:  kprimarycolor, // Background color
+                backgroundColor: kprimarycolor, // Background color
                 padding: const EdgeInsets.symmetric(
                     vertical: 13, horizontal: 23), // Padding
                 shape: RoundedRectangleBorder(

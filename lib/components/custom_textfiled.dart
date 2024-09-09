@@ -9,24 +9,25 @@ class CustomTextfiled extends StatelessWidget {
       this.controller,
       this.keyboardType,
       this.suffix,
-      this.prifix});
+      this.prifix, this.readonly});
   final VoidCallback? ontap;
   final String? hinttext;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final Widget? suffix;
   final Widget? prifix;
+  final bool? readonly;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onTap: ontap,
       controller: controller,
       keyboardType: keyboardType,
+      readOnly: readonly ?? false,
       decoration: InputDecoration(
         hintText: hinttext,
         suffix: suffix,
         prefix: prifix,
-
         border:const UnderlineInputBorder(
           borderSide: BorderSide(color: kprimarycolor,width: 2),
         ),
