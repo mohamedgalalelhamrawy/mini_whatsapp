@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_whatsapp/components/custom_button.dart';
 import 'package:mini_whatsapp/components/custom_textfiled.dart';
 import 'package:mini_whatsapp/constants.dart';
+import 'package:mini_whatsapp/screens/verifiy_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -101,9 +102,15 @@ class _LoginPageState extends State<LoginPage> {
             flex: 1,
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 40),
-            child: CusttomButton()
-          )
+              padding: const EdgeInsets.only(bottom: 40),
+              child: CusttomButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => VerifiyPage()),
+                  );
+                },
+              ))
         ],
       ),
     );

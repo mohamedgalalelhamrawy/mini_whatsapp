@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_whatsapp/components/custom_button.dart';
 import 'package:mini_whatsapp/components/custom_textfiled.dart';
 import 'package:mini_whatsapp/constants.dart';
+import 'package:mini_whatsapp/screens/profile_page.dart';
 
 class VerifiyPage extends StatefulWidget {
   const VerifiyPage({super.key});
@@ -11,11 +12,11 @@ class VerifiyPage extends StatefulWidget {
 }
 
 class _VerifiyPageState extends State<VerifiyPage> {
-    late TextEditingController codecontroller;
+  late TextEditingController codecontroller;
 
-    @override
+  @override
   void initState() {
-     codecontroller = TextEditingController();
+    codecontroller = TextEditingController();
     super.initState();
   }
 
@@ -44,21 +45,29 @@ class _VerifiyPageState extends State<VerifiyPage> {
               style: TextStyle(fontSize: 17),
             )),
           ),
-          SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 110),
             child: CustomTextfiled(
               controller: codecontroller,
-              hinttext: "-   -   -   -   -   -",     
+              hinttext: "-   -   -   -   -   -",
             ),
           ),
-           const Spacer(
+          const Spacer(
             flex: 1,
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 40),
-            child: CusttomButton()
-          )
+              padding: EdgeInsets.only(bottom: 40),
+              child: CusttomButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
+              ))
         ],
       ),
     );
