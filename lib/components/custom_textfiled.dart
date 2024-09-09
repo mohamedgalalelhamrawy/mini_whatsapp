@@ -9,7 +9,9 @@ class CustomTextfiled extends StatelessWidget {
       this.controller,
       this.keyboardType,
       this.suffix,
-      this.prifix, this.readonly});
+      this.prifix,
+      this.readonly,
+      this.textalign});
   final VoidCallback? ontap;
   final String? hinttext;
   final TextEditingController? controller;
@@ -17,6 +19,7 @@ class CustomTextfiled extends StatelessWidget {
   final Widget? suffix;
   final Widget? prifix;
   final bool? readonly;
+  final TextAlign? textalign;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -24,20 +27,20 @@ class CustomTextfiled extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       readOnly: readonly ?? false,
+      textAlign: textalign ?? TextAlign.center ,
       decoration: InputDecoration(
-        hintText: hinttext,
-        suffix: suffix,
-        prefix: prifix,
-        border:const UnderlineInputBorder(
-          borderSide: BorderSide(color: kprimarycolor,width: 2),
-        ),
-        enabledBorder:const UnderlineInputBorder(
-          borderSide: BorderSide(color: kprimarycolor,width: 2),
-        ),
-        focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: kprimarycolor,width: 2),
-        ) 
-      ),
+          hintText: hinttext,
+          suffix: suffix,
+          prefix: prifix,
+          border: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kprimarycolor, width: 2),
+          ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kprimarycolor, width: 2),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kprimarycolor, width: 2),
+          )),
     );
   }
 }

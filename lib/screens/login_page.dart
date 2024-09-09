@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_whatsapp/components/custom_button.dart';
 import 'package:mini_whatsapp/components/custom_textfiled.dart';
 import 'package:mini_whatsapp/constants.dart';
 
@@ -101,22 +102,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 40),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                "NEXT",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: kprimarycolor, // Background color
-                padding: const EdgeInsets.symmetric(
-                    vertical: 13, horizontal: 23), // Padding
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6), // Rounded corners
-                ),
-              ),
-            ),
+            child: CusttomButton()
           )
         ],
       ),
